@@ -1,0 +1,294 @@
+/* -------- SASS VARIABELEN -------- */
+
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans+Condensed:300,300i,700');
+$title-font: 'Kaushan Script', cursive;
+$paragraph-font: 'Open Sans Condensed', sans-serif;
+
+$color-white: #fff;
+$color-almost-black: #191818; /* menu background */
+$color-dark-grey: #333; /* titles */
+$color-light-grey: #ccc; /* descriptions */
+$color-lighter-grey: #eee; /* lines */
+$color-orange: #f18a61; /* titles and highlights*/
+
+
+/* -------- ALGEMEEN -------- */
+
+body {
+  background: $color-white;
+  font-family: $paragraph-font;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+#layout {
+    position: relative;
+    left: 0;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        left: 150px;
+        width: 150px;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+
+/* -------- CONTENT -------- */
+
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+.header {
+     margin: 0;
+     color: $color-dark-grey;
+     text-align: center;
+     padding: 2.5em 2em 1em;
+     margin-bottom: 2em;
+     border-bottom: 1px solid $color-lighter-grey;
+ }
+    .header h1 {
+        font-family: $title-font;
+        margin: 0;
+        font-size: 3em;
+        color: $color-orange;
+    }
+     .header h2 {
+        color: $color-light-grey;
+        padding: 0;
+        margin-top: 1em;
+        font-size: 1em;
+    }
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 700;
+    color: $color-dark-grey;
+}
+
+p {
+  margin: .5em auto;
+}
+
+
+
+/* -------- FIGURES / PORTFOLIO ITEMS -------- */
+
+#portfolio {
+  margin: 2em auto;
+}
+
+#portfolio div {
+  background-color: $color-orange;
+  position: relative;
+  text-align: center;
+}
+
+#portfolio div img {
+  filter: none;
+  transition: all 1.6s ease-in-out;
+}
+
+#portfolio div p {
+  font-size: 1em;
+  font-weight: 800;
+  color: $color-white;
+  padding: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: scale(0);
+  transition: all 300ms 300ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+#portfolio div a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#portfolio div:hover img {
+  opacity: 0.3;
+  filter: grayscale(100%) blur(1px);
+  transition: all 0.6s ease-in-out;
+}
+#portfolio div:hover p {
+  transform: scale(1);
+  transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.buttons a{
+  text-align: center;
+  box-sizing: border-box;
+  background-color: $color-orange;
+  color: $color-white;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: .8em;
+  padding: .4em;
+  transition: all 300ms
+}
+
+.buttons a:hover {
+  background-color: $color-dark-grey;
+}
+
+/* -------- MENU -------- */
+
+#menu {
+    margin-left: -150px; /* "#menu" width */
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: $color-almost-black;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+    #menu a {
+        color: $color-light-grey;
+        border: none;
+        padding: 0.6em 0 0.6em 0.6em;
+    }
+
+     #menu .pure-menu,
+     #menu .pure-menu ul {
+        border: none;
+        background: transparent;
+    }
+
+        #menu .pure-menu li a:hover,
+        #menu .pure-menu li a:focus {
+            background: none;
+            color: $color-orange;
+        }
+
+    #menu .pure-menu-selected,
+    #menu .pure-menu-heading {
+        background: $color-orange;
+    }
+
+        #menu .pure-menu-selected a {
+            color: $color-white;
+        }
+
+    #menu .pure-menu-heading {
+        font-family: $title-font;
+        font-size: 140%;
+        color: $color-white;
+        margin: 0;
+        text-transform: none;
+    }
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 0;
+    left: 0; /* "#menu width" */
+    background: #000;
+    background: rgba(0,0,0,0.7);
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+}
+
+    .menu-link:hover,
+    .menu-link:focus {
+        background: #000;
+    }
+
+    .menu-link span {
+        position: relative;
+        display: block;
+    }
+
+    .menu-link span,
+    .menu-link span:before,
+    .menu-link span:after {
+        background-color: #fff;
+        width: 100%;
+        height: 0.2em;
+    }
+
+        .menu-link span:before,
+        .menu-link span:after {
+            position: absolute;
+            margin-top: -0.6em;
+            content: " ";
+        }
+
+        .menu-link span:after {
+            margin-top: 0.6em;
+        }
+
+
+/* -------- MEDIA QUERIES -------- */
+
+@media (min-width: 48em) {
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    #layout {
+        padding-left: 150px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 150px;
+    }
+    .menu-link {
+        position: fixed;
+        left: 150px;
+        display: none;
+    }
+    #layout.active .menu-link {
+        left: 150px;
+    }
+}
+
+@media (max-width: 48em) {
+    #layout.active {
+        position: relative;
+        left: 150px;
+    }
+}
